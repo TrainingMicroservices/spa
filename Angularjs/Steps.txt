@@ -1,0 +1,83 @@
+ng new first-app
+cd first-app
+ng install
+/*Ejecutar en modo desarrollo*/
+
+ng serve
+
+/*Build for production*/
+ng build
+
+/*Install Angular Material*/
+ng add @angular/material
+
+/*Para usar los componentes de Angular Material se tienen que importar a nivel modulo
+y depsues usarlos en el HTML*
+/
+
+app.module.ts
+--------------
+
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatIconModule} from '@angular/material/icon';
+
+import {MatButtonModule} from '@angular/material/button';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatIconModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+app.component.html
+------------------
+<section>
+  <div class="example-label">Mini FAB</div>
+  <div class="example-button-row">
+    <div class="example-flex-container">
+      <div class="example-button-container">
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+      <div class="example-button-container">
+        <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+          <mat-icon>plus_one</mat-icon>
+        </button>
+      </div>
+      <div class="example-button-container">
+        <button mat-mini-fab color="warn" aria-label="Example icon button with a filter list icon">
+          <mat-icon>filter_list</mat-icon>
+        </button>
+      </div>
+      <div class="example-button-container">
+        <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<router-outlet></router-outlet>
+
+
